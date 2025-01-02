@@ -3,125 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOOK AT ME - Horror Game</title>
+    <title>Dark Haven Games</title>
     <style>
-        /* Global Styles */
-        body {
-            font-family: 'Arial', sans-serif;
+        /* General Reset */
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #1a1a1a, #2b2b2b);
-            color: #f5f5f5;
-        }
-        h1, h2 {
-            font-family: 'Verdana', sans-serif;
-            text-transform: uppercase;
-        }
-        a {
-            text-decoration: none;
+            box-sizing: border-box;
         }
 
-        /* Header Styles */
-        header {
-            background: #ff5722;
+        /* Body */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #111;
             color: #fff;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Button Styles */
-        .button {
-            display: inline-block;
-            margin: 30px 0;
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            text-transform: uppercase;
-            color: #fff;
-            background: #e64a19;
-            border: none;
-            border-radius: 50px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .button:hover {
-            background: #ff7043;
-            transform: scale(1.05);
-        }
-
-        /* Centering the button */
-        .button-container {
-            text-align: center;
-        }
-
-        /* Section Styles */
-        section {
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 800px;
-            background: #1f1f1f;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-        section h2 {
-            color: #ff5722;
-            border-bottom: 2px solid #ff5722;
-            padding-bottom: 5px;
-        }
-        section p, section ul {
-            font-size: 16px;
+            overflow-x: hidden;
             line-height: 1.6;
-            color: #ddd;
         }
-        ul {
-            list-style-type: none;
+
+        /* Navbar */
+        .navbar {
+            background-color: #222;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around; /* Aligne les éléments horizontalement */
             padding: 0;
         }
-        ul li {
-            margin: 10px 0;
+
+        .navbar ul li {
+            font-size: 1.2rem;
         }
 
-        /* Footer Styles */
-        footer {
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #e60000;
+        }
+
+        .cta-button-navbar {
+            background-color: #e60000;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .cta-button-navbar:hover {
+            background-color: #ff3333;
+            transform: translateY(-3px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(255, 0, 0, 0.7));
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
             text-align: center;
-            padding: 10px;
-            background: #333;
-            color: #aaa;
-            font-size: 14px;
-            margin-top: 30px;
-            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #f5f5f5;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Games Section */
+        .games {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px 5%;
+        }
+
+        .game-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            background: #222;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+        }
+
+        .game-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 30px rgba(255, 0, 0, 0.7);
+        }
+
+        .game-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            transition: transform 0.5s ease;
+        }
+
+        .game-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .game-info {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+            border-radius: 0 0 15px 15px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .game-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #f5f5f5;
+        }
+
+        .cta-button {
+            background-color: #e60000;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-top: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #ff3333;
+            transform: translateY(-3px);
+        }
+
+        /* Credits Section */
+        .credits {
+            background-color: #1a1a1a;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .credits h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #e60000;
+        }
+
+        .credits ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .credits li {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .credits a {
+            color: #f5f5f5;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .credits a:hover {
+            color: #e60000;
+        }
+
+        /* Game Description Section */
+        .game-description {
+            background-color: #222;
+            padding: 60px 10%;
+            text-align: center;
+        }
+
+        .game-description h2 {
+            font-size: 2.5rem;
+            color: #e60000;
+            margin-bottom: 20px;
+        }
+
+        .game-description p {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+            color: #f5f5f5;
+            font-size: 1rem;
+            border-top: 1px solid #e60000;
+        }
+
+        .footer p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .games {
+                grid-template-columns: 1fr;
+            }
+
+            .game-description {
+                padding: 40px 5%;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>LOOK AT ME</h1>
-        <p>A Horror Game Experience</p>
-    </header>
-    <main>
-        <div class="button-container">
-            <a href="https://www.roblox.com/games/102977619388713/LOOK-AT-ME-HORROR" class="button" target="_blank">PLAY NOW</a>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="https://www.roblox.com/games/102977619388713/LOOK-AT-ME-HORROR">New Games</a></li>
+            <li><a href="https://www.roblox.com/communities/35396417/Dark-Haven-Games#!/about">Community</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Dark Haven Games</h1>
+            <p>Dive into horror with our realistic and multiplayer games.</p>
         </div>
-        <section id="description">
-            <h2>Description</h2>
-            <p>You're alone in a small warehouse, but not at the right time...</p>
-            <p>A game of mental and physical survival, as well as horror!</p>
-         </p>
-        </section>
-        <section id="credits">
-            <h2>Credits</h2>
-            <p><strong>OWNER:</strong> @Melouxis</p>
-            <p><strong>DEV:</strong> @InsertSolverBrazen, @Melouxis, @Natander2_O</p>
-            <p><strong>TESTER:</strong> @ApostleAgent</p>
-            <p><strong>INVESTOR:</strong> @Haxker_13XAlt</p>
-            <p><strong>CONTENT IDEA:</strong> @Natander2_O, @InsertSolverBrazen, @Melouxis</p>
-            <p><strong>DIGITAL DISTRIBUTION:</strong> Dark Haven Games</p>
-        </section>
-    </main>
-    <footer>
+    </section>
+
+    <!-- Game Description Section -->
+    <section class="game-description">
+        <h2>LOOK AT ME</h2>
+        <p><strong>LOOK AT ME</strong> places you alone in a small warehouse, but not at the right time... A game of mental and physical survival, as well as horror!</p>
+        <a href="https://www.roblox.com/games/102977619388713/LOOK-AT-ME-HORROR" class="cta-button">Play Now!</a>
+    </section>
+
+    <!-- Credits Section -->
+    <section class="credits">
+        <h2>Credits</h2>
+        <ul>
+            <li><strong>OWNER:</strong> @Melouxis (Roblox)</li>
+            <li><strong>DEV:</strong> @InsertSolverBrazen (Roblox), @Melouxis (Roblox), @Natander2_O (Roblox)</li>
+            <li><strong>TESTER:</strong> @ApostleAgent (Roblox)</li>
+            <li><strong>INVESTOR:</strong> @Haxker_13XAlt (Roblox)</li>
+            <li><strong>CONTENT IDEA:</strong> @Natander2_O (Roblox), @InsertSolverBrazen (Roblox), @Melouxis (Roblox)</li>
+            <li><strong>DIGITAL DISTRIBUTION:</strong> <a href="https://www.roblox.com/communities/35396417/Dark-Haven-Games#!/about">Dark Haven Games</a> (Roblox Group)</li>
+        </ul>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
         <p>© 2025 Dark Haven Games. All rights reserved.</p>
     </footer>
+
 </body>
 </html>
